@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rock Paper Scissors – AI Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div id="confetti" aria-hidden="true"></div>
+
+    <main class="app" id="app">
+        <h1 class="title">ROCK PAPER SCISSORS <span>– AI CHALLENGE</span></h1>
+        <p class="subtitle">This AI studies your habits. Can you stay unpredictable?</p>
+
+        <!-- Scoreboard -->
+        <section class="scoreboard glass" aria-label="Scoreboard">
+            <div class="stat"><span class="stat-label">You</span><strong id="pScore">0</strong></div>
+            <div class="stat"><span class="stat-label">AI</span><strong id="aScore">0</strong></div>
+            <div class="stat"><span class="stat-label">Draws</span><strong id="draws">0</strong></div>
+            <div class="stat"><span class="stat-label">Rounds</span><strong id="rounds">0</strong></div>
+            <div class="stat"><span class="stat-label">AI accuracy</span><strong id="accuracy">–</strong></div>
+        </section>
+
+        <!-- Arena -->
+        <section class="arena glass" aria-live="polite">
+            <div class="fighter">
+                <span class="fighter-name">You</span>
+                <div class="hand" id="playerHand">❔</div>
+                <span class="fighter-move" id="playerMove">Pick a move</span>
+            </div>
+            <div class="vs">VS</div>
+            <div class="fighter">
+                <span class="fighter-name">AI</span>
+                <div class="hand" id="aiHand">🤖</div>
+                <span class="fighter-move" id="aiMove">Waiting…</span>
+            </div>
+        </section>
+
+        <section class="result" id="result">
+            <div class="result-banner" id="resultBanner">READY?</div>
+            <p class="result-message" id="resultMessage">Choose a move to start the first round.</p>
+            <p class="motivation" id="motivation">The AI knows nothing about you yet.</p>
+        </section>
+
+        <!-- Move buttons -->
+        <section class="choices" aria-label="Choose your move">
+            <button class="choice" data-move="rock"><span class="emoji">🪨</span><span>Rock</span></button>
+            <button class="choice" data-move="paper"><span class="emoji">📄</span><span>Paper</span></button>
+            <button class="choice" data-move="scissors"><span class="emoji">✂️</span><span>Scissors</span></button>
+        </section>
+
+        <div class="columns">
+            <!-- AI thinking -->
+            <section class="glass panel" aria-label="AI thinking">
+                <h2>🧠 AI thinking</h2>
+                <div class="prediction">
+                    <span class="muted">AI predicted you would play</span>
+                    <strong id="predMove">–</strong>
+                </div>
+                <div class="meter">
+                    <div class="meter-fill" id="confBar"></div>
+                </div>
+                <p class="muted small" id="confText">Confidence: –</p>
+                <p class="reason" id="reasonText">Play a round and the AI will explain its prediction.</p>
+
+                <h3>Your move habits</h3>
+                <div id="freqBars" class="freq"></div>
+
+                <h3>Prediction models</h3>
+                <ul id="modelList" class="models">
+                    <li class="muted">Models appear after a few rounds.</li>
+                </ul>
+            </section>
+
+            <!-- History -->
+            <section class="glass panel" aria-label="Game history">
+                <h2>📜 Game history</h2>
+                <ul id="historyList" class="history">
+                    <li class="muted">No rounds played yet.</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Controls -->
+        <section class="controls">
+            <button class="btn btn-restart" id="restartBtn" title="Clear scores and history. The AI keeps what it learned.">↻ Restart game</button>
+            <button class="btn btn-reset" id="resetBtn" title="Clear everything, including the AI's memory.">⟲ Reset everything</button>
+        </section>
+        <p class="muted small center">Restart keeps the AI's memory of you. Reset wipes it too.</p>
+    </main>
+
+    <div class="toast" id="toast" role="alert"></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
