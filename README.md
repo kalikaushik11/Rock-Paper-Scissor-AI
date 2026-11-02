@@ -204,8 +204,8 @@ The frontend sends this request using the JavaScript Fetch API.
 
 ## Author
 
-Akshat Nagpal(2400821530004)
-Kali Kaushik(2400821530029)
-Kartik Gupta(2400821530030)
-Students of Btech AIML 3rd year, MIT, Moradabad
+- **Akshat Nagpal(2400821530004)**
+- **Kali Kaushik(2400821530029)**
+- **Kartik Gupta(2400821530030)**
+- **Students of Btech AIML 3rd year, MIT, Moradabad**
 
